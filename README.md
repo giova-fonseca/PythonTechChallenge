@@ -28,8 +28,8 @@
     than 4)
 
 ## Challenge conditions:
- > You cannot import a library that solves it instantly
- > The methods add(), less(), greater(), and between() should have constant time O(1)
- > The method build_stats() can be at most linear O(n)
- > Apply the best practices you know
- > Share a public repo with your projec
+> You cannot import a library that solves it instantly
+> The methods add(), less(), greater(), and between() should have constant time O(1)
+> The method build_stats() can be at most linear O(n)
+> Apply the best practices you know
+> Share a public repo with your projec
