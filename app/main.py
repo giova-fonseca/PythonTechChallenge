@@ -72,9 +72,14 @@ class DataCapture():
     def between(self,value1:int, value2:int):
         try:
             if type(value1) == int and type(value2) == int:                
-                posIni =  self.dataOrderAsc.index(value1)
-                posFin =  self.dataOrderDes.index(value2)
-                x = self.dataOrderAsc[posIni:len(self.data)-posFin]
+                if value1>value2:
+                    posIni =  self.dataOrderAsc.index(value2)
+                    posFin =  self.dataOrderDes.index(value1)
+                    x = self.dataOrderAsc[posIni:len(self.data)-posFin]                    
+                else:
+                    posIni =  self.dataOrderAsc.index(value1)
+                    posFin =  self.dataOrderDes.index(value2)
+                    x = self.dataOrderAsc[posIni:len(self.data)-posFin]
                 return len(x)
             else:
                 raise TypeError("The value must be Integer")
@@ -98,6 +103,6 @@ print(f"The value to analyze is {value}")
 print(f"Less {stats.less(value)}")
 
 print(f"Greater {stats.greater(value)}")
-val1 =3
-val2 =4
+val1 =4
+val2 =3
 print(f"Items between {val1} and {val2}: {stats.between(val1,val2)}")
