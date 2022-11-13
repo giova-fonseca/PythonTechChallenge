@@ -3,13 +3,7 @@ MAX_VALUE = 1000
 class DataCapture():
     def __init__(self):
         self.data = []
-        self.dataOrderAsc = []
-        self.dataOrderDes = []
-        # self.mySet = set()
-
-    def __str__(self):
-        return f"This is the content of data {self.data.__str__()}"
-
+        self.mySet = set()
             
     def add(self,value:int):
         try:           
@@ -26,78 +20,65 @@ class DataCapture():
         except ValueError as e:
             print(f"Error executing method add for the value {value} {e.__str__()}")            
         except Exception as e:
-            print(f"Error executing method add for the value {value}")      
+            print(f"Error executing method add for the value {value}")
+        
     
     
     def build_stats(self):
         try:
-            # import pdb;
-            # pdb.set_trace()
-            
-            self.dataOrderAsc = self.data.copy()
-            self.dataOrderAsc.sort()
-            self.dataOrderDes = self.data.copy()
-            self.dataOrderDes.sort(reverse=True)
-            return self
+            self.mySet.update(self.data)
+                # print(f"Founded in the position {self.data.index(value)}")
+                # print(f"Less than {value} are {self.data.index(value)}")
+                # self.data.sort(reverse=True)
+                # print(f"Greater than {value} are {self.data.index(value)}")
+                # print(f"Counts of items in the set {len(self.mySet)}")
+                # print(f"Items in the set {self.mySet}")
+                # print(f"Counts of items in the stats {len(self.data)}")
+            return self.mySet
         except TypeError as ex:
             print(ex)
         except Exception as ex:
             print(ex)
-           
-           
-    def less(self,value:int)-> int:
-        try:
-            if type(value) == int:
-                return self.dataOrderAsc.index(value)
-            else:
-                raise TypeError("The value must be Integer")
-        except TypeError as ex:
-            print(ex)
-        except Exception as ex:
-            print(ex)
-
-
-    def greater(self,value:int)-> int:
-        try:
-            if type(value) == int:
-                return self.dataOrderDes.index(value)
-            else:
-                raise TypeError("The value must be Integer")
-        except TypeError as ex:
-            print(ex)
-        except Exception as ex:
-            print(ex)
-
     
-    def between(self,value1:int, value2:int):
+    def less(self,value:int):
         try:
-            if type(value1) == int and type(value2) == int:                
-                posIni =  self.dataOrderAsc.index(value1)
-                posFin =  self.dataOrderDes.index(value2)
-                x = self.dataOrderAsc[posIni:len(self.data)-posFin]
-                return len(x)
+            self.data.sort()            
+            if type(value) == int:
+                return self.data.index(value)
             else:
                 raise TypeError("The value must be Integer")
         except TypeError as ex:
             print(ex)
         except Exception as ex:
             print(ex)
+
+    def greater(self,value:int):
+        try:
+            self.data.sort(reverse=True)                        
+            if type(value) == int:
+                return self.data.index(value)
+            else:
+                raise TypeError("The value must be Integer")
+        except TypeError as ex:
+            print(ex)
+        except Exception as ex:
+            print(ex)
+    
+    def __str__(self):
+        return f"This is the content of data {self.data.__str__()}"
     
 capture = DataCapture()
-capture.add(value=2)
 capture.add(value=3)
 capture.add(value=9)
 capture.add(value=3)
 capture.add(value=4)
-capture.add(value=4)
 capture.add(value=6)
 stats = capture.build_stats()
 value = 4
-print(f"The list of values is {stats.dataOrderAsc}")
 print(f"The value to analyze is {value}")
-print(f"Less {stats.less(value)}")
+print(f"Less {capture.less(value)}")
 
-print(f"Greater {stats.greater(value)}")
-val1 =3
-val2 =4
-print(f"Items between {val1} and {val2}: {stats.between(val1,val2)}")
+print(f"Greater {capture.greater(value)}")
+
+print(capture.__str__())
+print(stats)
