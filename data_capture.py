@@ -1,6 +1,8 @@
+# Const for the max value in the structure
 MAX_VALUE = 1000
 
-class DataCapture():
+class DataCapture:
+    # Constructor for the class DataCapture, includes three structures. 
     def __init__(self):
         self.data = []
         self.dataOrderAsc = []
@@ -12,64 +14,72 @@ class DataCapture():
 
             
     def add(self,value:int):
+    # Method to add new value in main structure, validate the type and range of values between 0 and 1000.
         try:           
             if value:
                 if type(value) ==int:
-                    if value <= MAX_VALUE:                    
+                    if value <= MAX_VALUE and value >=0:                    
                         self.data.append(value)
                     else:
-                        raise ValueError("The value must be less than 1000")
+                        raise ValueError("The value must be less than 1000 and greater than 0")
                         
                 else:
-                    raise TypeError("The value must be Integer type")
-                                        
+                    raise TypeError("The value must be Integer type")                                        
         except ValueError as e:
             print(f"Error executing method add for the value {value} {e.__str__()}")            
         except Exception as e:
             print(f"Error executing method add for the value {value}")      
-    
+        return self
     
     def build_stats(self):
+    # Make a copy of the main structure in descending order and another copy in ascending order, 
+    # and return self object.
         try:
-            # import pdb;
-            # pdb.set_trace()
-            
             self.dataOrderAsc = self.data.copy()
             self.dataOrderAsc.sort()
             self.dataOrderDes = self.data.copy()
             self.dataOrderDes.sort(reverse=True)
             return self
         except TypeError as ex:
-            print(ex)
+            print(f"TypeError exception {ex}")
         except Exception as ex:
-            print(ex)
+            print(f"Exception {ex}")
            
            
     def less(self,value:int)-> int:
+    # Receive value per parameter, to determine how many elements in the structure are less than it
+    # and return the count of items.
+        
         try:
             if type(value) == int:
                 return self.dataOrderAsc.index(value)
             else:
                 raise TypeError("The value must be Integer")
         except TypeError as ex:
-            print(ex)
+            print(f"TypeError exception {ex}")
         except Exception as ex:
-            print(ex)
+            print(f"Exception {ex}")
 
 
     def greater(self,value:int)-> int:
+    # Receive value per parameter, to determine how many elements in the structure are greater than it
+    # and return the count of items.    
+    
         try:
             if type(value) == int:
                 return self.dataOrderDes.index(value)
             else:
                 raise TypeError("The value must be Integer")
         except TypeError as ex:
-            print(ex)
+            print(f"TypeError exception {ex}")
         except Exception as ex:
-            print(ex)
+            print(f"Exception {ex}")
 
     
-    def between(self,value1:int, value2:int):
+    def between(self,value1:int, value2:int)-> int:
+    # Receive two values ​​per parameter, to determine how many elements of the structure are within 
+    # the range of both parameters.
+        
         try:
             if type(value1) == int and type(value2) == int:                
                 if value1>value2:
@@ -84,25 +94,6 @@ class DataCapture():
             else:
                 raise TypeError("The value must be Integer")
         except TypeError as ex:
-            print(ex)
+            print(f"TypeError exception {ex}")
         except Exception as ex:
-            print(ex)
-    
-capture = DataCapture()
-capture.add(value=2)
-capture.add(value=3)
-capture.add(value=9)
-capture.add(value=3)
-capture.add(value=4)
-capture.add(value=4)
-capture.add(value=6)
-stats = capture.build_stats()
-value = 4
-print(f"The list of values is {stats.dataOrderAsc}")
-print(f"The value to analyze is {value}")
-print(f"Less {stats.less(value)}")
-
-print(f"Greater {stats.greater(value)}")
-val1 =4
-val2 =3
-print(f"Items between {val1} and {val2}: {stats.between(val1,val2)}")
+            print(f"Exception {ex}")

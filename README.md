@@ -34,3 +34,35 @@
     > The method build_stats() can be at most linear O(n)
     > Apply the best practices you know
     > Share a public repo with your projec
+
+
+## Testing:
+    The test_data_capture.py file has the tests for all the methods of the data_capture file.
+
+    Run the follow thess steps
+    1. open new terminal
+    2. in the Python shell execute the command: python test_data_capture.py
+
+
+## Running the challenge code.
+    The data_capture.py file has the code to resolve the challenge
+
+    Run the follow thess steps
+    1. open new terminal
+    2. execute the command python
+    2. in the Python shell execute these commands: 
+        >>> from data_capture import DataCapture
+        >>> capture = DataCapture()
+        >>> capture.add(3)
+        >>> capture.add(4)
+        >>> capture.add(3)
+        >>> capture.add(9)
+        >>> capture.add(6)
+        >>> stats = capture.build_stats()
+        >>> print(stats.less(4))
+        >>> print(stats.between(3,6))
+        >>> print(stats.greater(4))
+        
+
+        
+
