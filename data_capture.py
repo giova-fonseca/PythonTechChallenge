@@ -100,7 +100,6 @@ class DataCapture:
         
         if self.validateInput(value):           
             if value > self.dataOrderDes[0]:
-                # if value < self.dataOrderAsc[0]:
                 return len(self.dataOrderAsc)
             else:
                 position = int(len(self.dataOrderAsc)/2)
@@ -145,13 +144,11 @@ class DataCapture:
             if self.validateInput(value1) and self.validateInput(value2):
                 if value1>value2:
                     posIni =  self.searchValueAsc(self.dataOrderAsc,int(len(self.dataOrderAsc)/2),value2)
-                    posFin =  self.searchValueDes(self.dataOrderDes,int(len(self.dataOrderDes)/2),value1)
-                    
+                    posFin =  self.searchValueDes(self.dataOrderDes,int(len(self.dataOrderDes)/2),value1)                    
                     x = self.dataOrderAsc[posIni:len(self.data)-posFin]                    
                 else:
                     posIni =  self.searchValueAsc(self.dataOrderAsc,int(len(self.dataOrderAsc)/2),value1)                    
-                    posFin =  self.searchValueDes(self.dataOrderDes,int(len(self.dataOrderDes)/2),value2)
-                    
+                    posFin =  self.searchValueDes(self.dataOrderDes,int(len(self.dataOrderDes)/2),value2)                    
                     x = self.dataOrderAsc[posIni:len(self.data)-posFin]
                                         
                 return len(x)
