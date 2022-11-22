@@ -5,6 +5,7 @@ from unittest import TestCase, main
 class TestDataCapture(TestCase):
     
     def load_List(self):
+        # Create a test list with 99 random items.
         capture = DataCapture()        
         capture.add(value=29)
         capture.add(value=30)
@@ -109,6 +110,7 @@ class TestDataCapture(TestCase):
                
 
     def test_add(self):
+        # Test the add method of the class DataCapture.
         temp_capture = DataCapture()        
         temp_capture.add(value=5)
         temp_capture.add(value=18)
@@ -117,6 +119,7 @@ class TestDataCapture(TestCase):
         self.assertIn(18,temp_capture.dataOrderAsc,"ok")
 
     def test_less(self):
+        # Test the less method of the class DataCapture
         capture = self.load_List()
         capture.build_stats()     
               
@@ -128,6 +131,8 @@ class TestDataCapture(TestCase):
         self.assertEqual(99,capture.less(150),"Test Less OK")
     
     def test_greater(self):
+        # Test the greater method of the class DataCapture
+                
         capture = self.load_List()
         capture.build_stats()           
         self.assertEqual(97,capture.greater(1),"Test Greater OK")
@@ -140,6 +145,8 @@ class TestDataCapture(TestCase):
         self.assertEqual(99,capture.greater(0),"Is greater")
                        
     def test_between(self):
+        # Test the between method of the class DataCapture
+        
         capture = self.load_List()
         capture.build_stats()           
         self.assertEqual(6,capture.between(1,5),"Test Between OK")
