@@ -99,7 +99,8 @@ class DataCapture:
     # and return the count of items.
         
         if self.validateInput(value):           
-            if value < self.dataOrderAsc[0]:
+            if value > self.dataOrderDes[0]:
+                # if value < self.dataOrderAsc[0]:
                 return len(self.dataOrderAsc)
             else:
                 position = int(len(self.dataOrderAsc)/2)
@@ -119,7 +120,7 @@ class DataCapture:
     # and return the count of items.    
     
         if self.validateInput(value):           
-            if value > self.dataOrderDes[0]:
+            if value < self.dataOrderAsc[0]:
                 return len(self.dataOrderDes)
             else:
                 position = int(len(self.dataOrderDes)/2)

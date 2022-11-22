@@ -125,6 +125,7 @@ class TestDataCapture(TestCase):
         self.assertEqual(-1,capture.less(4),"Test Less OK")
         self.assertEqual(7,capture.less(8),"Test Less OK")
         self.assertEqual(5,capture.less(5),"Test Less OK")
+        self.assertEqual(99,capture.less(150),"Test Less OK")
     
     def test_greater(self):
         capture = self.load_List()
@@ -136,6 +137,7 @@ class TestDataCapture(TestCase):
         if self.assertNotIn(4,capture.dataOrderDes,"Values"):
             self.assertEqual(-1,capture.greater(4),"This value is not in the list")
             
+        self.assertEqual(99,capture.greater(0),"Is greater")
                        
     def test_between(self):
         capture = self.load_List()
